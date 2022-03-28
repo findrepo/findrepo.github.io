@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
     }
 
     return ( <Navbar bg="primary" variant="dark" sticky="top" >
-        <Navbar.Brand>Git Repo Search App</Navbar.Brand>
+        <Navbar.Brand>Git Repo Search</Navbar.Brand>
         <Nav className="mr-auto navbarOuter">
             <Container fluid className="horNavContainer">
                 <Row className="horNavRow">

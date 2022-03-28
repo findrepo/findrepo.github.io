@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Field, reduxForm, change, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { Search, ArrowUpSquareFill, StarFill, ArrowDownUp } from 'react-bootstrap-icons';
+import { Search, Share, StarFill, ArrowDownUp, ArrowCounterclockwise } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from "react-redux";
 import { validateAdvancedForm } from '../formValidators';
 import { RenderField } from './formElements/RenderField';
@@ -49,55 +49,50 @@ let AdvancedSearch = (props) => {
         <form onSubmit={handleSubmit}>
             <Container fluid>
                 <Row className="simpleSearchRow">
-                    <Col xs lg={4} className="searchCell">
+                    <Col md={4} sm={12} className="searchCell searchByCell">
                         <label htmlFor="searchValue">Search by: </label> 
                         <Field name="searchValue" component={RenderField}
-                            type="text" label="search by" />
+                            type="text" label="search by" className='searchby'/>
                     </Col>
-                    <Col xs lg={6}>
+                    <Col md={6} sm={8}>
                         <Field name="filter" id="filter" component={RenderCheckBoxes} type="checkbox" />
                     </Col>
-                    <Col className="modToggleOuter">
-                        Show URL: <Button className="queryButton" variant="primary" size="sm"
-                            disabled={submitting || !valid || isLoading} onClick={onTypeToggle}
-                            ><ArrowUpSquareFill size={18}></ArrowUpSquareFill></Button>
+                    <Col md={2} sm={4} className="modToggleOuter">
+                        <Button className="queryButton" variant="primary" size="sm" type="submit" disabled={submitting || !valid || isLoading}>
+                            {isLoading ? 'Loading' : (<Search color="white" size={14}></Search>)}
+                        </Button>
+                        <Button className="queryButton" variant="primary" size="sm" type="button" disabled={submitting || isLoading || pristine}
+                            onClick={onCombinedReset}>
+                                <ArrowCounterclockwise size={14}></ArrowCounterclockwise>
+                        </Button>
+                        <Button className="queryButton" variant="primary" size="sm"
+                            disabled={submitting || !valid || isLoading} onClick={onTypeToggle}>
+                            <Share size={14}></Share>
+                        </Button>
                     </Col>
                 </Row>
                 <Row className="simpleSearchRow">
-                    <Col xs lg={4} className="searchCell">
-                        <label htmlFor="user">User name: </label>
+                    <Col md={3} xs={6} className="searchCell">
+                        <label htmlFor="user">User: </label>
                         <Field name="user" component={RenderField}
                             type="text" label="user name" />
                     </Col>
-                    <Col xs lg={6} className="langTopicOuter">
-                        <span className="langTopic">
-                            <label htmlFor="lang">Language: </label>
-                            <Field name="lang" component={RenderField}
-                                type="text" label="language" />
-                            <label htmlFor="topic">Topic: </label>
-                            <Field name="topic" component={RenderField}
-                                type="text" label="topic" />
-                        </span>
-                    </Col>
-                    <Col className="searchButtonsOuter">
-                        <Button className="searchButton" variant="secondary" size="sm" type="submit" disabled={submitting || !valid || isLoading}>
-                            {isLoading ? 'Loading' : (<Search color="white" size={16}></Search>)}
-                        </Button>
-                        <Button className="searchButton" variant="secondary" size="sm" type="button" disabled={submitting || isLoading || pristine}
-                            onClick={onCombinedReset}>Reset</Button>
-                    </Col>
-                </Row>
-                <Row className="simpleSearchRow">
-                    <Col xs={4} className="searchCell">
-                        <label htmlFor="org">Organization: </label>
+                    <Col md={3} xs={6} className="searchCell">
+                        <label htmlFor="org">Org.: </label>
                         <Field name="org" component={RenderField}
                             type="text" label="organization" />
                     </Col>
-                    <Col>
+                    <Col md={3} xs={6} className="searchCell">
+                            <label htmlFor="lang">Lang.: </label>
+                            <Field name="lang" component={RenderField}
+                                type="text" label="language" />
+                     </Col>
+                    <Col md={3} xs={6} className="searchCell">
+                           <label htmlFor="topic">Topic: </label>
+                            <Field name="topic" component={RenderField}
+                                type="text" label="topic" />
                     </Col>
-                    <Col>
-                    
-                    </Col>
+
                 </Row>
                 <Row>
                     <Col xs lg={6} className="starsFilterOuter">
@@ -208,11 +203,7 @@ let AdvancedSearch = (props) => {
                             </span>
                         </span>
                     </Col>
-
-                    <Col>
-                        
-                    </Col>
-                </Row>
+                    </Row>
             </Container>
         </form>
     )

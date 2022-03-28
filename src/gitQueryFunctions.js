@@ -93,10 +93,10 @@ const initializeFromUrl = (initFormParam) => {
     const initForm = {...initFormParam } || {};
     const urlParams = new URLSearchParams(window.location.search);
     const initQuery = urlParams.get('query');
-    console.log('initQuery url param query', initQuery );
+    // console.log('initQuery url param query', initQuery );
     if (initQuery) {
         for(const element of decodeURIComponent(initQuery).trim().split(' ')) {
-            console.log('Processing element: ' + element);
+            // console.log('Processing element: ' + element);
             const splittedElement = element.split(':');
             if (splittedElement.length === 1) {
                 initForm.searchValue = element;
@@ -111,7 +111,7 @@ const initializeFromUrl = (initFormParam) => {
                     initForm.topic = splittedElement[1];
                 } else if (splittedElement[0] === 'in') {
                     initForm[splittedElement[1]] = true;
-                    console.log(splittedElement[1] + ' is set to true!') 
+                    // console.log(splittedElement[1] + ' is set to true!') 
                 }
             }
       
