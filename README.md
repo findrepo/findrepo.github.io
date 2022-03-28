@@ -1,26 +1,17 @@
-# Just for me not to forget how to gyiploj to github pages this masterpiece
-Still not perfect as browserRouter kills it all.. but.....
-## Pre-req:
-Package json should have what GH pages gave me:
-### `"homepage": "https://fotoamg.github.io/findrepo/",`
+# Just for me not to forget how to deploy to github pages this masterpiece
 
-router must have same:     
-### `<Router basename="/findrepo">`
-
-build should be removed from gitignore and pushed to repo....
+build should be removed from gitignore and pushed to repo in a subtree branch....
 
 subtree need to be used to push as GH pages cannot be set up to sub folder.....
 
-## Deployemt:
+## Deployment:
 
 0) commit changes in separate commit...
 1) npm run build
 2) git add .
 3) commit the build!! (I prefer GIT GUI to edit text)
 4) git push
-5) git subtree push --prefix build origin gh-pages3
-
-or whatever name you like ... I ruined the first 2-3 :P
+5) git subtree push --prefix build origin gh-pages
 
 
 # Getting Started with Create React App
