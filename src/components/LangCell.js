@@ -46,12 +46,12 @@ function LangCell(props) {
     }, [ dispatch, isFetchStarted, langList, langUrl])
 
 
-    return <Col className="repoColLangs" xs={1}>
+    return <div>
         {!langList ? <Button variant="secondary" size="sm" disabled={true}>{language}</Button> : ''} 
         {(langList || []).map((lang, idx) => (
             <Button variant="secondary" key={idx} size="sm" disabled={true}>{lang}</Button>
         ))}
-    </Col>
+    </div>
 
 }
 

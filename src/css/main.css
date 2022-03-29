@@ -35,8 +35,12 @@ h2, h3 {
 }
 
 .hiddenContent {
-    /*display: none;*/
+    display: none !important;
     visibility: hidden;
+}
+
+.wpNoWrap {
+    white-space: nowrap !important;
 }
 
 .bg-primary {
@@ -495,5 +499,64 @@ h2, h3 {
     .container, .container-md, .container-sm {
         max-width: unset !important;
     }
+}
+
+@media (min-width: 768px) {
+    .smallSizeOnly {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .bigSizeOnly {
+        display: none !important;
+    }
+    .repoColLangs {
+        overflow: hidden !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        flex-direction: column;
+        justify-content: space-evenly;
+        display: flex;
+        text-align: center;
+    }
+    .repoColLangs > button {
+        padding-left: 0px !important;
+    }
+    .repoColLangs smallSizeOnly {
+        text-align: center;
+    }
+    .repoColLangs Img {
+        border-radius: 50%;
+        padding-bottom: 5px;
+    }
+    .repoColDates {
+        padding-left: 5px !important;
+        padding-right: 2px !important;
+    }
+    .repoColImg {
+        padding-left: 2px !important;
+    }
+    .repoColDesc {
+        padding-left: 3px !important;
+        padding-right: 5px;
+    }
+    .repoColName {
+        padding-right: 3px !important;
+        padding-left: 3px !important;
+        flex-direction: column;
+        justify-content: space-between;
+        display: flex;
+    }
+    .repoNameMeta {
+        padding-bottom: 5px;
+    }
+}
+
+.repoNameTop {
+    padding-left: 0px !important;
+}
+.repoNameTop div {
+   padding-left: 0px !important;
 }
 

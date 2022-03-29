@@ -87,25 +87,33 @@ function SortControl(props) {
 
     return <Row className="sortOrderRow">
         <Col className="sortByCol">
-            Sort by:
+            <span className="wpNoWrap">Sort by:</span>
             <RadioGroup name="sortBy" selectedValue={sortBy} onChange={sortChanged}>
-                <Radio id="stars" name="stars" value="stars" />
-                <label htmlFor="stars">stars </label>
-                <Radio id="forks" name="forks" value="forks" />
-                <label htmlFor="forks">forks </label>
+                <span className="wpNoWrap">
+                    <Radio id="stars" name="stars" value="stars" />
+                    <label htmlFor="stars">stars </label>
+                </span>
+                <span className="wpNoWrap">
+                    <Radio id="forks" name="forks" value="forks" />
+                    <label htmlFor="forks">forks </label>
+                </span>
             </RadioGroup>
         </Col>
         <Col className="orderByCol">
-            Order by:
+            <span className="wpNoWrap">Order by:</span>
             <RadioGroup name="orderBy" selectedValue={orderBy} onChange={orderChanged}>
+            <span className="wpNoWrap">
                 <Radio id="desc" name="desc" value="desc" />
                 <label htmlFor="desc">desc </label>
+            </span>
+            <span className="wpNoWrap">
                 <Radio id="asc" name="asc" value="asc" />
                 <label htmlFor="asc">asc </label>
+            </span>
             </RadioGroup>
         </Col>
         <Col className="totalResultCol">
-            Total results: {totalResult}
+            <span className="wpNoWrap">Total results:</span> {totalResult}
         </Col>
     </Row>;
 

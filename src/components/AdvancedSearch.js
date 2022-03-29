@@ -98,7 +98,7 @@ let AdvancedSearch = (props) => {
                     <Col xs lg={6} className="starsFilterOuter">
                         <span className="starsFilter">
                             <StarFill color="yellow" size={12}></StarFill>
-                            <span className="starsMainLabel">Stars</span>
+                            <span className="starsMainLabel">&nbsp;</span>
                             <Field
                                 name="starCheck"
                                 component={RenderRadio}
@@ -136,23 +136,27 @@ let AdvancedSearch = (props) => {
                             >
                             </Field>
                             <span className="starsFilterNumberRow">
-                                <label htmlFor="starsNumber">{starsCheckedVal === 'between' ? 'Min: ' : 'Number: '} </label>
-                                <Field name="starsNumber" component={RenderField}
-                                    type="text" label="number" />
-                                <label className={starsCheckedVal === 'between' ? '' : 'hiddenContent'}
-                                    htmlFor="starsMax">
-                                    Max:
-                                </label>
-                                <Field className={starsCheckedVal === 'between' ? '' : 'hiddenContent'}
-                                    name="starsMax" component={RenderField}
-                                    type="text" label="number" />
+                                <span className="wpNoWrap">
+                                    <label htmlFor="starsNumber">{starsCheckedVal === 'between' ? 'Min: ' : 'Stars: '} </label>
+                                    <Field name="starsNumber" component={RenderField}
+                                        type="text" label="number" />
+                                </span>
+                                <span className="wpNoWrap">
+                                    <label className={starsCheckedVal === 'between' ? '' : 'hiddenContent'}
+                                        htmlFor="starsMax">
+                                        Max:
+                                    </label>
+                                    <Field className={starsCheckedVal === 'between' ? '' : 'hiddenContent'}
+                                        name="starsMax" component={RenderField}
+                                        type="text" label="number" />
+                                </span>
                             </span>
                         </span>
                     </Col>
                     <Col xs lg={6} className="sizeFilterOuter">
                         <span className="sizeFilter">
                             <ArrowDownUp color="lightblue" size={12}></ArrowDownUp>
-                            <span className="sizeMainLabel">Size</span>
+                            <span className="sizeMainLabel">&nbsp;</span>
                             <Field
                                 name="sizeCheck"
                                 component={RenderRadio}
@@ -190,16 +194,20 @@ let AdvancedSearch = (props) => {
                             >
                             </Field>
                             <span className="sizeFilterNumberRow">
-                                <label htmlFor="sizeNumber">{sizeCheckedVal === 'between' ? 'Min: ' : 'Number: '} </label>
-                                <Field name="sizeNumber" component={RenderField}
-                                    type="text" label="number" />
-                                <label className={sizeCheckedVal === 'between' ? '' : 'hiddenContent'}
-                                    htmlFor="sizeMax">
-                                    Max:
-                                </label>
-                                <Field className={sizeCheckedVal === 'between' ? '' : 'hiddenContent'}
-                                    name="sizeMax" component={RenderField}
-                                    type="text" label="number" />
+                                <span className="wpNoWrap">
+                                    <label htmlFor="sizeNumber">{sizeCheckedVal === 'between' ? 'Min: ' : 'Size: '} </label>
+                                    <Field name="sizeNumber" component={RenderField}
+                                        type="text" label="number" />
+                                </span>
+                                <span className="wpNoWrap">
+                                    <label className={sizeCheckedVal === 'between' ? '' : 'hiddenContent'}
+                                        htmlFor="sizeMax">
+                                        Max:
+                                    </label>
+                                    <Field className={sizeCheckedVal === 'between' ? '' : 'hiddenContent'}
+                                        name="sizeMax" component={RenderField}
+                                        type="text" label="number" />
+                                </span>        
                             </span>
                         </span>
                     </Col>

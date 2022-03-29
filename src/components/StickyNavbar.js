@@ -23,7 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
             <Container fluid className="horNavContainer">
                 <Row className="horNavRow">
                     <Col className="horNavLinkCol">
-                        <span className="creatorInfo" onClick={showCreator}>&copy;reated by FotoAmg</span>
+                        <span className="creatorInfo" onClick={showCreator}>Rea&copy;ted by FotoAmg</span>
                     </Col>
                     <Col className="vertNavDropCol">
                         <Dropdown>

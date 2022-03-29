@@ -68,9 +68,9 @@ function PagerControl(props) {
     }
 
     return <Row className="pagerRow">
-        <Col>
+        <Col md={6} sm={2}>
         </Col>
-        <Col className="totalResultCol">
+        <Col md={6} sm={10} className="totalResultCol">
             <span className="totalResultCurrent"> Current page: {currPage} of {lastPage} </span>
             {links.first ? <span className="pagerButton" onClick={onFirstClicked}>
                 <ChevronBarLeft color="white" size={16}></ChevronBarLeft>
