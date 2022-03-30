@@ -10,7 +10,9 @@ export const initialState = {
     currPage: 1,
     orderBy: 'desc',
     sortBy: 'stars',
-    type: 'search'
+    type: 'search',
+    starsOpen: false,
+    sizeOpen: false
 };
 
 /**
@@ -182,6 +184,16 @@ const searchReducer = (state = { ...initialState }, action) => {
             state = { ...state };
             state.type = action.payload.type || initialState.type;
             break;
+        case "STARS_TOGGLE":
+            // console.log("STARS_TOGGLE reducer", action.payload);
+            state = { ...state };
+            state.starsOpen = !state.starsOpen;
+            break;
+        case "SIZE_TOGGLE":
+            // console.log("SIZE_TOGGLE reducer", action.payload);
+            state = { ...state };
+            state.sizeOpen = !state.sizeOpen;
+            break;        
         case "SEARCH_TYPE_NAV":
             state = { ...state };
             state.type = 'search';

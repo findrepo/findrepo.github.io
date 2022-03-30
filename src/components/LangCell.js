@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
-import { Col, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
 
 /**

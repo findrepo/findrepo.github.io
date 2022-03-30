@@ -27,6 +27,10 @@ h2, h3 {
     cursor: pointer;
 }
 
+.filterToggler {
+    cursor: pointer; 
+}
+
 .mainContainer {
    /* background-color: lavender; */
     padding-bottom: 10px;
@@ -104,7 +108,7 @@ h2, h3 {
 }
 
 .searchby input[type=text] {
-    max-width: 170px !important;
+    max-width: 180px !important;
     width: 100%;
 }
 
@@ -512,7 +516,7 @@ h2, h3 {
         display: none !important;
     }
     .repoColLangs {
-        overflow: hidden !important;
+        overflow-x: auto !important;
         padding-left: 0px !important;
         padding-right: 0px !important;
         flex-direction: column;
@@ -550,6 +554,36 @@ h2, h3 {
     }
     .repoNameMeta {
         padding-bottom: 5px;
+    }
+    .sortByCol {
+        padding-right: 2px !important;
+    }
+    .sortByCol > div {
+        padding: 2px !important;
+
+    }
+    .orderByCol {
+        padding: 2px !important;
+    }
+    .padding-right > div {
+        padding: 2px !important;
+    }
+    .sortByCol div label, .orderByCol div label {
+        padding-right: 2px !important;
+    }
+    .modToggleOuter {
+        padding-right: 2px !important;
+    }
+    .filterCell {
+        padding-right: 0px !important;
+        padding-left: 2px !important;
+    }
+    .searchByCell, .simpleSearchRow > div {
+        padding-right: 3px !important;
+        padding-left: 3px !important;
+    }
+    .searchby input[type=text] {
+        max-width: 90px !important;
     }
 }
 

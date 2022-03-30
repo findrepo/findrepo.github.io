@@ -55,7 +55,18 @@ class SearchPanel extends React.Component {
         window.open('http://localhost:3000/?query='+encodeURIComponent(gitQueryString),
             'popup','width=1200,height=600,scrollbars=no,resizable=no');
         console.log('Encoded query values: ' + encodeURIComponent(gitQueryString));*/
-        alert(window.location.origin+'/?query='+encodeURIComponent(gitQueryString));
+        // alert(window.location.origin+'/?query='+encodeURIComponent(gitQueryString));
+        const shareData = {
+            title: 'GitRepoSearch',
+            text: 'Shared Git Repo search query URL',
+            url: window.location.origin+'/?query='+encodeURIComponent(gitQueryString)
+          }
+        if (navigator.share) {
+            navigator.share(shareData);
+        } else {
+            alert(shareData.url);
+        }
+        
     }
 
     /**
@@ -74,7 +85,8 @@ class SearchPanel extends React.Component {
                 <Row className='searchContainer'>
                     <Col>
                         <AdvancedSearch onSubmit={this.handleAdvancedSubmit} onReset={this.handleReset}
-                            onTypeToggle={this.showQuery} manualSearchFn={this.handleAdvancedSubmit}/>
+                            onTypeToggle={this.showQuery} manualSearchFn={this.handleAdvancedSubmit}
+                            onStarsToggle={this.props.starsToggle} onSizeToggle={this.props.sizeToggle} />
                     </Col>
                 </Row>
                 {this.props.isError ? (<Row>
@@ -166,6 +178,14 @@ const mapDispatchToProps = (dispatch) => {
         },
         startSearch: () => dispatch({
             type: "SEARCH_START",
+            payload: {}
+        }),
+        starsToggle: () => dispatch({
+            type: "STARS_TOGGLE",
+            payload: {}
+        }),
+        sizeToggle: () => dispatch({
+            type: "SIZE_TOGGLE",
             payload: {}
         })
     };

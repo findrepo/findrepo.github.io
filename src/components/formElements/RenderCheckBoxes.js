@@ -17,7 +17,7 @@ export const RenderCheckBoxes = ({ input, label, type, meta: { touched, error, w
 
             <span className="filterCheckItem">
                 <Field name="description" id="description" component="input" type="checkbox" />
-                <label htmlFor="description">description </label>
+                <label htmlFor="description">desc. </label>
             </span>
 
             <span className="filterCheckItem">

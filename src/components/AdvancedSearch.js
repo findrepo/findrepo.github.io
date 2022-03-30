@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Field, reduxForm, change, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { Search, Share, StarFill, ArrowDownUp, ArrowCounterclockwise } from 'react-bootstrap-icons';
+import { Search, Share, StarFill, ArrowDownUp, ArrowCounterclockwise,Hourglass } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from "react-redux";
 import { validateAdvancedForm } from '../formValidators';
 import { RenderField } from './formElements/RenderField';
@@ -14,8 +14,10 @@ import { RenderRadio } from './formElements/RenderRadio';
  * @param {*} props 
  */
 let AdvancedSearch = (props) => {
-    const { handleSubmit, reset, submitting, pristine, valid, onReset, onTypeToggle, starsCheckedVal, sizeCheckedVal, manualSearchFn } = props;
+    const { handleSubmit, reset, submitting, pristine, valid, onReset, onTypeToggle, starsCheckedVal, sizeCheckedVal, manualSearchFn, onStarsToggle, onSizeToggle } = props;
     const isLoading = useSelector(state => state.search.isLoading);
+    const starsOpen = useSelector(state => state.search.starsOpen);
+    const sizeOpen = useSelector(state => state.search.sizeOpen);
     const searchFormData = useSelector(state => state.form.simpleSearch);
     const history = useSelector(state => state.search.searchHistory);
     const dispatch = useDispatch();
@@ -49,23 +51,23 @@ let AdvancedSearch = (props) => {
         <form onSubmit={handleSubmit}>
             <Container fluid>
                 <Row className="simpleSearchRow">
-                    <Col md={4} sm={12} className="searchCell searchByCell">
+                    <Col md={4} sm={4} className="searchCell searchByCell">
                         <label htmlFor="searchValue">Search by: </label> 
                         <Field name="searchValue" component={RenderField}
                             type="text" label="search by" className='searchby'/>
                     </Col>
-                    <Col md={6} sm={8}>
+                    <Col md={6} sm={5}>
                         <Field name="filter" id="filter" component={RenderCheckBoxes} type="checkbox" />
                     </Col>
-                    <Col md={2} sm={4} className="modToggleOuter">
+                    <Col md={2} sm={3} className="modToggleOuter">
                         <Button className="queryButton" variant="primary" size="sm" type="submit" disabled={submitting || !valid || isLoading}>
-                            {isLoading ? 'Loading' : (<Search color="white" size={14}></Search>)}
+                            {isLoading ? (<Hourglass color="white" size={14}></Hourglass>) : (<Search color="white" size={14}></Search>)}
                         </Button>
                         <Button className="queryButton" variant="primary" size="sm" type="button" disabled={submitting || isLoading || pristine}
                             onClick={onCombinedReset}>
                                 <ArrowCounterclockwise size={14}></ArrowCounterclockwise>
                         </Button>
-                        <Button className="queryButton" variant="primary" size="sm"
+                        <Button className="queryButton" variant="primary" size="sm" 
                             disabled={submitting || !valid || isLoading} onClick={onTypeToggle}>
                             <Share size={14}></Share>
                         </Button>
@@ -96,8 +98,12 @@ let AdvancedSearch = (props) => {
                 </Row>
                 <Row>
                     <Col xs lg={6} className="starsFilterOuter">
+                    {starsOpen ? (
                         <span className="starsFilter">
-                            <StarFill color="yellow" size={12}></StarFill>
+                            <StarFill color="yellow" size={12}
+                                title="close stars filter"
+                                onClick={onStarsToggle}>
+                            </StarFill>
                             <span className="starsMainLabel">&nbsp;</span>
                             <Field
                                 name="starCheck"
@@ -152,10 +158,21 @@ let AdvancedSearch = (props) => {
                                 </span>
                             </span>
                         </span>
+                    ) :
+                    (   <span className="filterToggler" onClick={onStarsToggle}
+                            title="show stars filter">
+                            <StarFill color="yellow" size={12}></StarFill>
+                            <span className="starsMainLabel"> filter</span>    
+                        </span>
+                    )}
                     </Col>
                     <Col xs lg={6} className="sizeFilterOuter">
+                    {sizeOpen ? (
                         <span className="sizeFilter">
-                            <ArrowDownUp color="lightblue" size={12}></ArrowDownUp>
+                            <ArrowDownUp color="lightblue" size={12}
+                                title="close size filter"
+                                onClick={onSizeToggle}>
+                            </ArrowDownUp>
                             <span className="sizeMainLabel">&nbsp;</span>
                             <Field
                                 name="sizeCheck"
@@ -210,6 +227,13 @@ let AdvancedSearch = (props) => {
                                 </span>        
                             </span>
                         </span>
+                     ) :
+                     (   <span className="filterToggler" onClick={onSizeToggle}
+                             title="show size filter">
+                             <ArrowDownUp color="lightblue" size={12}></ArrowDownUp>
+                             <span className="sizeMainLabel"> size filter</span>    
+                         </span>
+                     )}
                     </Col>
                     </Row>
             </Container>
