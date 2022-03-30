@@ -213,8 +213,8 @@ h2, h3 {
     margin: 2px;
     padding: 0px;
     vertical-align: baseline;
-    height: 20px;
-    width: 20px;
+    height: 26px;
+    width: 28px;
     line-height: 10px;
 }
 
@@ -556,14 +556,19 @@ h2, h3 {
         padding-bottom: 5px;
     }
     .sortByCol {
+        padding-left: 5px !important;
         padding-right: 2px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
     }
     .sortByCol > div {
         padding: 2px !important;
-
     }
     .orderByCol {
-        padding: 2px !important;
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
     }
     .padding-right > div {
         padding: 2px !important;
@@ -584,6 +589,14 @@ h2, h3 {
     }
     .searchby input[type=text] {
         max-width: 90px !important;
+    }
+    .modToggleOuter > button {
+        width: 28px;
+        height: 28px;
+    }
+    .modToggleOuter > button > svg {
+        width: 20px;
+        height: 20px;
     }
 }
 

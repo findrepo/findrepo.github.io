@@ -61,15 +61,15 @@ let AdvancedSearch = (props) => {
                     </Col>
                     <Col md={2} sm={3} className="modToggleOuter">
                         <Button className="queryButton" variant="primary" size="sm" type="submit" disabled={submitting || !valid || isLoading}>
-                            {isLoading ? (<Hourglass color="white" size={14}></Hourglass>) : (<Search color="white" size={14}></Search>)}
+                            {isLoading ? (<Hourglass color="white" size={18}></Hourglass>) : (<Search color="white" size={18}></Search>)}
                         </Button>
                         <Button className="queryButton" variant="primary" size="sm" type="button" disabled={submitting || isLoading || pristine}
                             onClick={onCombinedReset}>
-                                <ArrowCounterclockwise size={14}></ArrowCounterclockwise>
+                                <ArrowCounterclockwise size={18}></ArrowCounterclockwise>
                         </Button>
                         <Button className="queryButton" variant="primary" size="sm" 
                             disabled={submitting || !valid || isLoading} onClick={onTypeToggle}>
-                            <Share size={14}></Share>
+                            <Share size={18}></Share>
                         </Button>
                     </Col>
                 </Row>
