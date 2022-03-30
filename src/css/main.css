@@ -509,6 +509,10 @@ h2, h3 {
     .smallSizeOnly {
         display: none !important;
     }
+    .langCellsHolder {
+        height: 99%;
+        cursor: pointer;
+    }
 }
 
 @media (max-width: 767px) {
@@ -527,7 +531,7 @@ h2, h3 {
     .repoColLangs > button {
         padding-left: 0px !important;
     }
-    .repoColLangs smallSizeOnly {
+    .repoColLangs .ownerLink {
         text-align: center;
     }
     .repoColLangs Img {

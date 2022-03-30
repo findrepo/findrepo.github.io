@@ -38,9 +38,13 @@ function RepoRow(props) {
             <p title={props.repo.description}>{props.repo.description}</p>
         </Col>
 
-        <Col className="repoColLangs" xs={1}>
-            <LangCell language={props.repo.language} langUrl={props.repo.languages_url}></LangCell>
-            <div className="smallSizeOnly">
+        <Col className="repoColLangs bigSizeOnly" xs={1}>
+            <LangCell language={props.repo.language} langUrl={props.repo.languages_url} clickShouldLoad={true}></LangCell>
+        </Col>
+
+        <Col className="repoColLangs smallSizeOnly" xs={1}>
+            <LangCell language={props.repo.language} langUrl={props.repo.languages_url} clickShouldLoad={false}></LangCell>
+            <div className="ownerLink">
                 <a href={props.repo.owner_html_url} target="blank">
                     <img alt={props.repo.owner} src={props.repo.owner_avatar_url} width="30px"></img>
                 </a>

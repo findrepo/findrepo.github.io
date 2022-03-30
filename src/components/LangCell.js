@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
  * @param {*} props 
  */
 function LangCell(props) {
-    const { language, langUrl } = props;
+    const { language, langUrl, clickShouldLoad } = props;
     const langList = useSelector(state => state.loader[langUrl]);
     const dispatch = useDispatch();
     /**
@@ -18,8 +18,34 @@ function LangCell(props) {
      * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      */
     // eslint-disable-next-line
-    const [isFetchStarted, setFetchStarted] = useState(true);
+    const [isFetchStarted, setFetchStarted] = useState(false);
 
+    const onCellClick = () => {
+        if (clickShouldLoad && !langList && !isFetchStarted) {
+            setFetchStarted(true);
+            axios.get(langUrl).then(response => {
+                // console.log('langUrl result', response);
+                if (response.status === 200) {
+                    dispatch({
+                        type: "URL_FETCHED",
+                        payload: {
+                            data: response.data,
+                            url: langUrl
+                        }
+                    })
+                } else {
+                    // console.log('Error lang fetch!');
+                    // setTimeout(() =>{setFetchStarted(false);}, 1500+(Math.random() * (response.status) +1));
+                }
+            }).catch(function (errorObj) {
+                // console.log('Error in lang fetch', errorObj);
+                // setTimeout(() =>{setFetchStarted(false);}, 1000+(Math.random() * (500) +1));
+            });
+        }
+
+    }
+
+    /*
     useEffect(() => {
         if (!langList && !isFetchStarted) {
             setFetchStarted(true);
@@ -44,10 +70,14 @@ function LangCell(props) {
             });
         }
     }, [ dispatch, isFetchStarted, langList, langUrl])
+    */
 
-
-    return <div>
-        {!langList ? <Button variant="secondary" size="sm" disabled={true}>{language}</Button> : ''} 
+    return <div title={clickShouldLoad ? 'click to load language details' : 'language'}
+            className="langCellsHolder" onClick={onCellClick}>
+        {!langList ? 
+            (language ?
+                    (<Button variant="secondary" size="sm" disabled={isFetchStarted || !clickShouldLoad}>{language}</Button>) : '' )
+                     : '' }
         {(langList || []).map((lang, idx) => (
             <Button variant="secondary" key={idx} size="sm" disabled={true}>{lang}</Button>
         ))}
