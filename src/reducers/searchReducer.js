@@ -12,7 +12,8 @@ export const initialState = {
     sortBy: 'stars',
     type: 'search',
     starsOpen: false,
-    sizeOpen: false
+    sizeOpen: false,
+    proxyPrefix: ''
 };
 
 /**
@@ -201,6 +202,11 @@ const searchReducer = (state = { ...initialState }, action) => {
         case "HISTORY_TYPE_NAV":
             state = { ...state };
             state.type = 'history';
+            break;
+        case "SET_PROXY":
+            // console.log("SET_PROXY reducer", action.payload);
+            state = { ...state };
+            state.proxyPrefix = action.payload.proxyPrefix || initialState.proxyPrefix;
             break;
         default:
             // // console.log("default CASE reducer", action.payload);
