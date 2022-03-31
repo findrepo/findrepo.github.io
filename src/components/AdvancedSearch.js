@@ -63,11 +63,11 @@ let AdvancedSearch = (props) => {
                         <Button className="queryButton" variant="primary" size="sm" type="submit" disabled={submitting || !valid || isLoading}>
                             {isLoading ? (<Hourglass color="white" size={18}></Hourglass>) : (<Search color="white" size={18}></Search>)}
                         </Button>
-                        <Button className="queryButton" variant="primary" size="sm" type="button" disabled={submitting || isLoading || pristine}
+                        <Button className="queryButton" variant="secondary" size="sm" type="button" disabled={submitting || isLoading || pristine}
                             onClick={onCombinedReset}>
                                 <ArrowCounterclockwise size={18}></ArrowCounterclockwise>
                         </Button>
-                        <Button className="queryButton" variant="primary" size="sm" 
+                        <Button className="queryButton" variant="secondary" size="sm" 
                             disabled={submitting || !valid || isLoading} onClick={onTypeToggle}>
                             <Share size={18}></Share>
                         </Button>
